@@ -63,4 +63,4 @@
 * [jerrykuku/luci-app-jd-dailybonus](https://github.com/jerrykuku/luci-app-jd-dailybonus)
 
 
-更新修改时间为0点
+更新修改时间为2点
