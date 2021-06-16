@@ -11,7 +11,7 @@ const download = require('download')
 const cookie = process.env.JD_COOKIE
 // 京东Cookie
 const dual_cookie = process.env.JD_DUAL_COOKIE
-// Server酱SCKEY
+// pushplus的token
 const push_key = process.env.PUSH_KEY
 
 // 京东脚本文件
@@ -71,15 +71,15 @@ function sendNotificationIfNeed() {
     console.log('没有执行结果，任务中断!'); return;
   }
 
-  let text = "京东签到_" + dateFormat();
-  let desp = fs.readFileSync(result_path, "utf8")
+  let title = "京东签到_" + dateFormat();
+  let message = fs.readFileSync(result_path, "utf8")
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
-    uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, desp },
+    uri:  `http://pushplus.hxt.com/customer/push/send`,
+    form: { title, message, token:SCKEY },
     json: true,
     method: 'POST'
   }
